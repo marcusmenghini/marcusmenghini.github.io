@@ -1,3 +1,113 @@
-<html><body>
-  <h1> It Works </h1>  
-</body></html>
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Marcus Menghini</title>
+  <!--
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+ -->
+  <style>
+  body {
+  background-color: #555
+  }
+  
+	img.rounded {
+  object-fit: cover;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+	box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
+}
+
+.center {
+	width: 400px;
+	height: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15%;
+}
+
+.frame {
+	position: relative;
+	text-align: center;
+	font-family: sans-serif;
+}
+.eyes {
+	position: absolute;
+	top: 138px;
+	left: 163px;
+
+}
+.eye {
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background: #CCC;
+  margin: 5px 5px;
+  
+}
+.eye:after { /*pupil*/
+  position: absolute;
+  bottom: 17px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: #000;
+  border-radius: 50%;
+  content: " ";
+}
+
+  </style>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<div class="center">
+		<div class="frame">
+			<div class='eyes'>
+				<div class='eye'></div>
+				<div class='eye'></div>
+			</div>
+			<img src="marcus.png" class="rounded">
+		</div>
+	</div>
+	
+	<script>
+	
+$("body").mousemove(function(event) {
+  var eye = $(".eye");
+  console.log('eye', eye)
+  var x = (eye.offset().left) + (eye.width() / 2);
+  var y = (eye.offset().top) + (eye.height() / 2);
+  var rad = Math.atan2(event.pageX - x, event.pageY - y);
+  var rot = (rad * (180 / Math.PI) * -1) + 180;
+  eye.css({
+    '-webkit-transform': 'rotate(' + rot + 'deg)',
+    '-moz-transform': 'rotate(' + rot + 'deg)',
+    '-ms-transform': 'rotate(' + rot + 'deg)',
+    'transform': 'rotate(' + rot + 'deg)'
+  });
+});
+	</script>
+</body>
+</html>
